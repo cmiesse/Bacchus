@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Soirées</h1>
+<div class="row">
+  {% for soiree in soirees %}
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title">{{soiree.nom}}</h5>
+      <p class="card-text">{{soiree.date}}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
