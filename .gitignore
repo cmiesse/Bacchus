@@ -108,7 +108,7 @@ media/
 *.db
 *.pid
 .idea
-bacchus/secrets.py
+bacchus/secret_key.py
 # Ignore Django Migrations in Development if you are working on team
 
 # Only for Development only
