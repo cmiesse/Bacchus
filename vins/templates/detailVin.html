@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Détail de vin</h1>
+<p>Appelation : <b>{{vin.appelation}}</b></p>
+<p>Cru : <b>{{vin.cru}}</b></p>
+<p>Pays : <b>{{vin.pays}}</b></p>
+<p>Région : <b>{{vin.region}}</b></p>
+<p>Lieu d'achat : <b>{{vin.lieuAchat}}</b></p>
+<p>Prix : <b>{{vin.prix}} €</b></p>
+<p>Millésime : <b>{{vin.millesime}}</b></p>
+<p>Cépage(s) : <b>{{vin.cepage}}</b></p>
+<p>Propriétaire : <b>{{vin.proprietaire}}</b></p>
+<p>degre : <b>{{vin.degre}}°</b></p>
+{% endblock %}

@@ -6,5 +6,4 @@ class SoireeAdmin(admin.ModelAdmin):
     list_display = ('nom','date')
 
 
-
 admin.site.register(Soiree, SoireeAdmin)

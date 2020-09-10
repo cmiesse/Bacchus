@@ -7,4 +7,5 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
+    path('<int:soiree_id>/details', views.detailSoiree, name="soireeDetail")
 ]
