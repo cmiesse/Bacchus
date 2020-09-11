@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'soirees.apps.SoireesConfig',
     'vins.apps.VinsConfig',
+    'fiches.apps.FichesConfig',
     'pages.apps.PagesConfig'
 ]
 

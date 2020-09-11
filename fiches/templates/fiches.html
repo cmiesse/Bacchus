@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Fiches</h1>
+<div class="row">
+  {% for fiche in fiches %}
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title">{{fiche.limpidite}}</h5>
+      <a href="{% url 'ficheDetail' fiche.id%}" class="btn btn-primary"
+        >Détails du fiche</a
+      >
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

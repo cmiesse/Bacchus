@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include('pages.urls')),
     path('soirees/', include('soirees.urls')),
     path('vins/', include('vins.urls')),
+    path('fiches/', include('fiches.urls'))
 ]
