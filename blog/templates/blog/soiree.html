@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %} {% block content %} {% for soiree in soirees %}
+
+<h1>Soirées de Bacchus</h1>
+
+<article class="media content-section">
+  <div class="media-body">
+    <h2>
+      <a class="article-title" href="{% url 'soiree-detail' soiree.id %}"
+        >{{ soiree.theme }}</a
+      >
+    </h2>
+    <p class="article-content">{{ soiree.date_soiree }}</p>
+  </div>
+</article>
+{% endfor %} {% endblock content %}

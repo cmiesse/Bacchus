@@ -2,14 +2,14 @@
 <article class="media content-section">
   <img
     class="rounded-circle article-img"
-    src="{{ post.author.profile.image.url }}"
+    src="{{ post.auteur.profile.image.url }}"
   />
   <div class="media-body">
     <div class="article-metadata">
-      <a class="mr-2" href="{% url 'user-posts' post.author.username %}"
-        >{{ post.author }}</a
+      <a class="mr-2" href="{% url 'user-posts' post.auteur.username %}"
+        >{{ post.auteur }}</a
       >
-      <small class="text-muted">{{ post.date_posted|date:"d F Y" }}</small>
+      <small class="text-muted">{{ post.date_post|date:"d F Y" }}</small>
     </div>
     <h2>
       <a class="article-title" href="{% url 'post-detail' post.id %}"

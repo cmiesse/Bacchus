@@ -2,15 +2,15 @@
 <article class="media content-section">
   <img
     class="rounded-circle article-img"
-    src="{{ object.author.profile.image.url }}"
+    src="{{ object.auteur.profile.image.url }}"
   />
   <div class="media-body">
     <div class="article-metadata">
-      <a class="mr-2" href="{% url 'user-posts' object.author.username %}"
-        >{{ object.author }}</a
+      <a class="mr-2" href="{% url 'user-posts' object.auteur.username %}"
+        >{{ object.auteur }}</a
       >
-      <small class="text-muted">{{ object.date_posted|date:"d F Y" }}</small>
-      {% if object.author == user %}
+      <small class="text-muted">{{ object.date_post|date:"d F Y" }}</small>
+      {% if object.auteur == user %}
       <div>
         <a
           class="btn btn-secondary btn-sm mt-1 mb-1"

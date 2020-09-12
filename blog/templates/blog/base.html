@@ -29,12 +29,16 @@
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
               <a class="nav-item nav-link" href="{% url 'blog-home' %}">Accueil</a>
+              <a class="nav-item nav-link" href="{% url 'soiree-list' %}">Soirées</a>
+              <a class="nav-item nav-link" href="{% url 'vin-list' %}">Vin</a>
               <a class="nav-item nav-link" href="{% url 'blog-about' %}">A propos</a>
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
               {% if user.is_authenticated %}
                 <a class="nav-item nav-link" href="{% url 'post-create' %}">Nouvelle annonce</a>
+                <a class="nav-item nav-link" href="{% url 'soiree-create' %}">Nouvelle soirée</a>
+                <a class="nav-item nav-link" href="{% url 'vin-create' %}">Nouveau vin</a>
                 <a class="nav-item nav-link" href="{% url 'profile' %}">Profil</a>
                 <a class="nav-item nav-link" href="{% url 'logout' %}">Déconnexion</a>
               {% else %}
@@ -64,9 +68,8 @@
             <p class='text-muted'>Raccourcis
               <ul class="list-group">
                 <li class="list-group-item list-group-item-light">Derniers posts</li>
-                <li class="list-group-item list-group-item-light">Announces</li>
+                <li class="list-group-item list-group-item-light">Annonces</li>
                 <li class="list-group-item list-group-item-light">Calendriers</li>
-                <li class="list-group-item list-group-item-light">etc</li>
               </ul>
             </p>
           </div>

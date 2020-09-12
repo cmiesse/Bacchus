@@ -8,7 +8,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from .models import Post
+from .models import Post, Soiree, Vin
 
 
 def home(request):
@@ -22,7 +22,7 @@ class PostListView(ListView):
     model = Post
     template_name = 'blog/home.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'
-    ordering = ['-date_posted']
+    ordering = ['-date_post']
     #paginate_by = 5
 
 
@@ -34,7 +34,7 @@ class UserPostListView(ListView):
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
-        return Post.objects.filter(author=user).order_by('-date_posted')
+        return Post.objects.filter(auteur=user).order_by('-date_post')
 
 
 class PostDetailView(DetailView):
@@ -46,7 +46,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     fields = ['titre', 'contenu']
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        form.instance.auteur = self.request.user
         return super().form_valid(form)
 
 
@@ -55,12 +55,12 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     fields = ['titre', 'contenu']
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        form.instance.auteur = self.request.user
         return super().form_valid(form)
 
     def test_func(self):
         post = self.get_object()
-        if self.request.user == post.author:
+        if self.request.user == post.auteur:
             return True
         return False
 
@@ -71,10 +71,46 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         post = self.get_object()
-        if self.request.user == post.author:
+        if self.request.user == post.auteur:
             return True
         return False
 
+class SoireeListView(ListView):
+    model = Soiree
+    template_name = 'blog/soiree.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'soirees'
+    ordering = ['-date_soiree']
+
+class SoireeDetailView(DetailView):
+    model = Soiree
+
+class SoireeCreateView(LoginRequiredMixin, CreateView):
+    model = Soiree
+    fields = ['theme', 'date_soiree']
+
+class SoireeUpdateView(LoginRequiredMixin, UpdateView):
+    model = Soiree
+    fields = ['pays', 'region', 'appelation', 'cru', 'couleur', 'lieu_achat', 'prix_achat', 'millesime', 'cepages', 'proprietaire', 'degre']
+
+class VinListView(ListView):
+    model = Vin
+    template_name = 'blog/soiree.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'vins'
+
+class VinDetailView(DetailView):
+    model = Vin
+
+class VinCreateView(LoginRequiredMixin, CreateView):
+    model = Vin
+    fields = ['pays', 'region', 'appelation', 'cru', 'couleur', 'lieu_achat', 'prix_achat', 'millesime', 'cepages', 'proprietaire', 'degre']
+
+class VinUpdateView(LoginRequiredMixin, UpdateView):
+    model = Vin
+    fields = ['pays', 'region', 'appelation', 'cru', 'couleur', 'lieu_achat', 'prix_achat', 'millesime', 'cepages', 'proprietaire', 'degre']
+
+class VinDeleteView(LoginRequiredMixin, DeleteView):
+    model = Vin
+    success_url = 'vin/'
 
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})

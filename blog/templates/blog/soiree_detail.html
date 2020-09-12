@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %} {% block content %}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <div>
+        <a
+          class="btn btn-secondary btn-sm mt-1 mb-1"
+          href="{% url 'soiree-update' object.id %}"
+          >Mettre à jour</a
+        >
+      </div>
+    </div>
+    <h2 class="article-title">{{ object.theme }}</h2>
+    <p class="article-content">{{ object.date_soiree }}</p>
+  </div>
+</article>
+{% endblock content %}
