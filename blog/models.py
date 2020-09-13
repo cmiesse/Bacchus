@@ -43,3 +43,54 @@ class Vin(models.Model):
 
     def get_absolute_url(self):
         return reverse('vin-detail', kwargs={'pk': self.pk})
+
+class Fiche(models.Model):
+    LIMPIDITE = [
+        ('trouble','Trouble'),
+        ('brillant','Brillant'),
+        ('scintillant','Scintillant')
+    ]
+    limpidite = models.CharField(max_length=20, choices=LIMPIDITE,default='brillant')
+    INTENSITE_COULEURS = [
+        ('pâle','Pâle'),
+        ('moyenne','Moyenne'),
+        ('profonde','Profonde'),
+        ('foncée','Foncée'),
+        ('soutenue','Soutenue')
+    ]
+    intensite_couleurs = models.CharField(max_length=20, choices=INTENSITE_COULEURS,default='moyenne')
+    ROBE_BLANC = [
+        ('teinté de vert','Tienté de vert'),
+        ('jaune pâle','Jaune pâle),
+        ('jaune', 'Jaune'),
+        ('paille','Paille'),
+        ('or','Or'),
+        ('doré','Doré'),
+        ('ambré','Ambré'),
+        ('madérisé','Madérisé')
+    ]
+    robe_blanc = models.CharField(max_length=20, choices=ROBE_BLANC)
+    robe_rose = models.CharField()
+    robe_rouge = models.CharField()
+    viscosite = models.CharField()
+    commentaires_visuel = models.CharField()
+    intensite_nez = models.CharField()
+    rappel_fruit = models.CharField()
+    rappel_floral = models.CharField()
+    rappel_epice = models.CharField() 
+    bouquet = models.CharField()
+    commentaires_arome = models.CharField()
+    douceur = models.CharField()
+    tanins = models.CharField()
+    acidite = models.CharField()
+    corps = models.CharField()
+    persistance = models.CharField()
+    equilibre = models.CharField()
+    stade_maturation = models.CharField()
+    impression_technique = models.CharField()
+    commentaires_ensemble = models.CharField()
+    impression_personnelle = models.CharField()
+    date_degustation = models.DateField(default=timezone.now)
+    periode_garde = models.CharField()
+    vin = models.ForeignKey(Vin, on_delete=models.CASCADE)
+    auteur = models.ForeignKey(User, on_delete=models.CASCADE)
