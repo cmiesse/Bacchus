@@ -94,7 +94,7 @@ class SoireeUpdateView(LoginRequiredMixin, UpdateView):
 
 class VinListView(ListView):
     model = Vin
-    template_name = 'blog/soiree.html'  # <app>/<model>_<viewtype>.html
+    template_name = 'blog/vin.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'vins'
 
 class VinDetailView(DetailView):

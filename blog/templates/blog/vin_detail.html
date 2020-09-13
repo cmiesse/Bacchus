@@ -16,14 +16,18 @@
       </div>
     </div>
     <h2 class="article-title">{{ vin.region }} {{vin.appelation}}</h2>
-    <p class="article-content">{{ vin.pays }}</p>
-    <p class="article-content">{{ vin.cru }}</p>
-    <p class="article-content">{{ vin.couleur }}</p>
-    <p class="article-content">{{ vin.lieu_achat }} {{vin.prix_achat}}</p>
-    <p class="article-content">{{ vin.millesime }}</p>
-    <p class="article-content">{{ vin.cepages }}</p>
-    <p class="article-content">{{ vin.proprietaire }}</p>
-    <p class="article-content">{{ vin.degre }}</p>
+    <p class="article-content">Pays : {{ vin.pays }}</p>
+    <p class="article-content">Région : {{ vin.region }}</p>
+    <p class="article-content">appelation : {{ vin.appelation }}</p>
+    <p class="article-content">Cru : {{ vin.cru }}</p>
+    <p class="article-content">Couleur : {{ vin.couleur }}</p>
+    <p class="article-content">
+      Lieu et prix d'achat : {{ vin.lieu_achat }} à {{vin.prix_achat}}
+    </p>
+    <p class="article-content">Millésime : {{ vin.millesime }}</p>
+    <p class="article-content">Cépages : {{ vin.cepages }}</p>
+    <p class="article-content">Propriétaire : {{ vin.proprietaire }}</p>
+    <p class="article-content">Degré : {{ vin.degre }}°</p>
   </div>
 </article>
 {% endblock content %}

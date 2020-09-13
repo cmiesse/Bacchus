@@ -1,6 +1,6 @@
-{% extends "blog/base.html" %} {% block content %} {% for soiree in soirees %}
+{% extends "blog/base.html" %} {% block content %} {% for vin in vins %}
 
-<h1>Soirées de Bacchus</h1>
+<h1>Vins de Bacchus</h1>
 
 <article class="media content-section">
   <div class="media-body">
@@ -9,7 +9,7 @@
         >{{ vin.region }} {{vin.appelation}}</a
       >
     </h2>
-    <p class="article-content">{{ vin.millesime }}</p>
+    <p class="article-content">{{ vin.pays }}</p>
   </div>
 </article>
 {% endfor %} {% endblock content %}
