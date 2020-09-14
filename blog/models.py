@@ -41,6 +41,9 @@ class Vin(models.Model):
     proprietaire= models.CharField(max_length=100)
     degre= models.FloatField()
 
+    def __str__(self):
+        return self.appelation
+
     def get_absolute_url(self):
         return reverse('vin-detail', kwargs={'pk': self.pk})
 

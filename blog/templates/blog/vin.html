@@ -10,6 +10,9 @@
       >
     </h2>
     <p class="article-content">{{ vin.pays }}</p>
+    <a class="nav-item nav-link" href="{% url 'fiche-create' vin.id%}"
+      >Nouvelle fiche</a
+    >
   </div>
 </article>
 {% endfor %} {% endblock content %}

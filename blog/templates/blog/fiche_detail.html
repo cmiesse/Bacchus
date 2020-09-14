@@ -24,7 +24,51 @@
       </div>
       {% endif %}
     </div>
-    <h2 class="article-title">{{ object.vin.appelation }}</h2>
+    <h2 class="article-title">Fiche de {{ object.vin.appelation }}</h2>
+    <p class="article-content">Limpidité : {{ fiche.limpidite }}</p>
+    <p class="article-content">
+      Intensité des couleurs : {{ fiche.intensite_couleurs }}
+    </p>
+    <p class="article-content">Robe : {{ fiche.robe_blanc }}</p>
+    <p class="article-content">Robe : {{ fiche.robe_rose }}</p>
+    <p class="article-content">Robe : {{ fiche.robe_rouge }}</p>
+    <p class="article-content">Viscosité : {{ fiche.viscosite }}</p>
+    <p class="article-content">
+      Commentaires (visuel) : {{ fiche.commentaires_visuel }}
+    </p>
+    <p class="article-content">Intensité du nez : {{ fiche.intensite_nez }}</p>
+    <p class="article-content">Rappel du fruit : {{ fiche.rappel_fruit }}</p>
+    <p class="article-content">Rappel floral : {{ fiche.rappel_floral }}</p>
+    <p class="article-content">Rappel d'épice : {{ fiche.rappel_epice }}</p>
+    <p class="article-content">Bouquet : {{ fiche.bouquet }}</p>
+    <p class="article-content">
+      Commentaires (arôme) : {{ fiche.commentaires_arome }}
+    </p>
+    <p class="article-content">Douceur : {{ fiche.douceur }}</p>
+    <p class="article-content">Tanins : {{ fiche.tanins }}</p>
+    <p class="article-content">Acidité : {{ fiche.acidite }}</p>
+    <p class="article-content">Corps : {{ fiche.corps }}</p>
+    <p class="article-content">Persistance : {{ fiche.persistance }}</p>
+    <p class="article-content">Equilibre : {{ fiche.equilibre }}</p>
+    <p class="article-content">
+      Commentaires (saveur) : {{ fiche.commentaires_saveur }}
+    </p>
+    <p class="article-content">
+      Stade de maturation : {{ fiche.stade_maturation }}
+    </p>
+    <p class="article-content">
+      Impression technique : {{ fiche.impression_technique }}
+    </p>
+    <p class="article-content">
+      Commentaires (ensemble) : {{ fiche.commentaires_ensemble }}
+    </p>
+    <p class="article-content">
+      Impression personnelle : {{ fiche.impression_personnelle }}
+    </p>
+    <p class="article-content">
+      Date de dégustation : {{ fiche.date_degustation }}
+    </p>
+    <p class="article-content">Période de garde : {{ fiche.periode_garde }}</p>
   </div>
 </article>
 {% endblock content %}

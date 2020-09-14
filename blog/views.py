@@ -151,7 +151,8 @@ class FicheCreateView(LoginRequiredMixin, CreateView):
 'impression_personnelle',
 'date_degustation',
 'periode_garde',
-'vin']
+'vin'
+]
 
     def form_valid(self, form):
         form.instance.auteur = self.request.user
@@ -186,14 +187,15 @@ class FicheUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 'impression_personnelle',
 'date_degustation',
 'periode_garde',
-'vin']
+'vin'
+]
 
     def form_valid(self, form):
         form.instance.auteur = self.request.user
         return super().form_valid(form)
 
     def test_func(self):
-        post = self.get_object()
+        fiche = self.get_object()
         if self.request.user == fiche.auteur:
             return True
         return False
@@ -204,7 +206,7 @@ class FicheDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     success_url = 'fiche/'
 
     def test_func(self):
-        post = self.get_object()
+        fiche = self.get_object()
         if self.request.user == fiche.auteur:
             return True
         return False
