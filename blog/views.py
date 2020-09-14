@@ -211,5 +211,14 @@ class FicheDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
+class VinFicheListView(ListView):
+    model = Fiche
+    template_name = 'blog/vin_fiches.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'fiches'
+
+    def get_queryset(self):
+        vin = get_object_or_404(Vin, id=self.kwargs.get('id'))
+        return Fiche.objects.filter(vin=vin)
+
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})

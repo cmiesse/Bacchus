@@ -21,6 +21,7 @@ from .views import (
     FicheCreateView,
     FicheUpdateView,
     FicheDeleteView,
+    VinFicheListView
 )
 from . import views
 
@@ -36,15 +37,16 @@ urlpatterns = [
     path('soiree/new/', SoireeCreateView.as_view(), name='soiree-create'),
     path('soiree/<int:pk>/update/', SoireeUpdateView.as_view(), name='soiree-update'),
     path('vin/', VinListView.as_view(), name='vin-list'),
-    path('vin/<int:pk>/', VinDetailView.as_view(), name='vin-detail'),
+    path('vin/<int:pk>/detail', VinDetailView.as_view(), name='vin-detail'),
     path('vin/new/', VinCreateView.as_view(), name='vin-create'),
     path('vin/<int:pk>/update/', VinUpdateView.as_view(), name='vin-update'),
     path('vin/<int:pk>/delete/', VinDeleteView.as_view(), name='vin-delete'),
     path('fiche/', FicheListView.as_view(),name='fiche-list'),
-    path('user/fiche/<str:username>', UserFicheListView.as_view(), name='user-fiches'),
+    path('user/<str:username>/fiche/', UserFicheListView.as_view(), name='user-fiches'),
     path('fiche/<int:pk>/detail', FicheDetailView.as_view(), name='fiche-detail'),
     path('vin/<int:pk>/fiche/new/', FicheCreateView.as_view(), name='fiche-create'),
     path('fiche/<int:pk>/update/', FicheUpdateView.as_view(), name='fiche-update'),
     path('fiche/<int:pk>/delete/', FicheDeleteView.as_view(), name='fiche-delete'),
+    path('vin/<int:id>/fiche/', VinFicheListView.as_view(), name='vin-fiches'),
     path('about/', views.about, name='blog-about'),
 ]
