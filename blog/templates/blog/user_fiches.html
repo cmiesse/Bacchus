@@ -1,0 +1,24 @@
+{% extends "blog/base.html" %} {% block content %}
+<h1 class="mb-3">
+  Fiches de {{ view.kwargs.username }} ({{ page_obj.paginator.count }})
+</h1>
+{% for fiche in fiches %}
+<article class="media content-section">
+  <img
+    class="rounded-circle article-img"
+    src="{{ fiche.auteur.profile.image.url }}"
+  />
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" href="{% url 'user-fiches' fiche.auteur.username %}"
+        >{{ fiche.auteur }}</a
+      >
+    </div>
+    <h2>
+      <a class="article-title" href="{% url 'fiche-detail' fiche.id %}"
+        >{{ fiche.vin.appelation }}</a
+      >
+    </h2>
+  </div>
+</article>
+{% endfor %} {% endblock content %}

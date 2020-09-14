@@ -8,14 +8,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from .models import Post, Soiree, Vin
-
-
-def home(request):
-    context = {
-        'posts': Post.objects.all()
-    }
-    return render(request, 'blog/home.html', context)
+from .models import Post, Soiree, Vin, Fiche
 
 
 class PostListView(ListView):
@@ -111,6 +104,110 @@ class VinUpdateView(LoginRequiredMixin, UpdateView):
 class VinDeleteView(LoginRequiredMixin, DeleteView):
     model = Vin
     success_url = 'vin/'
+
+class FicheListView(ListView):
+    model = Fiche
+    template_name = 'blog/fiche.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'fiches'
+
+class UserFicheListView(ListView):
+    model = Fiche
+    template_name = 'blog/user_fiches.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'fiches'
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Fiche.objects.filter(auteur=user)
+
+class FicheDetailView(DetailView):
+    model = Fiche
+
+
+class FicheCreateView(LoginRequiredMixin, CreateView):
+    model = Fiche
+    fields = ['limpidite',
+'intensite_couleurs',
+'robe_blanc',
+'robe_rose',
+'robe_rouge',
+'viscosite',
+'commentaires_visuel',
+'intensite_nez',
+'rappel_fruit',
+'rappel_floral',
+'rappel_epice',
+'bouquet',
+'commentaires_arome',
+'douceur',
+'tanins',
+'acidite',
+'corps',
+'persistance',
+'equilibre',
+'commentaires_saveur',
+'stade_maturation',
+'impression_technique',
+'commentaires_ensemble',
+'impression_personnelle',
+'date_degustation',
+'periode_garde',
+'vin']
+
+    def form_valid(self, form):
+        form.instance.auteur = self.request.user
+        return super().form_valid(form)
+
+
+class FicheUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Fiche
+    fields = ['limpidite',
+'intensite_couleurs',
+'robe_blanc',
+'robe_rose',
+'robe_rouge',
+'viscosite',
+'commentaires_visuel',
+'intensite_nez',
+'rappel_fruit',
+'rappel_floral',
+'rappel_epice',
+'bouquet',
+'commentaires_arome',
+'douceur',
+'tanins',
+'acidite',
+'corps',
+'persistance',
+'equilibre',
+'commentaires_saveur',
+'stade_maturation',
+'impression_technique',
+'commentaires_ensemble',
+'impression_personnelle',
+'date_degustation',
+'periode_garde',
+'vin']
+
+    def form_valid(self, form):
+        form.instance.auteur = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == fiche.auteur:
+            return True
+        return False
+
+
+class FicheDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Fiche
+    success_url = 'fiche/'
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == fiche.auteur:
+            return True
+        return False
 
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})

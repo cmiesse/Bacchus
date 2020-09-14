@@ -60,8 +60,8 @@ class Fiche(models.Model):
     ]
     intensite_couleurs = models.CharField(max_length=20, choices=INTENSITE_COULEURS,default='moyenne')
     ROBE_BLANC = [
-        ('teinté de vert','Tienté de vert'),
-        ('jaune pâle','Jaune pâle),
+        ('teinté de vert','Teinté de vert'),
+        ('jaune pâle','Jaune pâle'),
         ('jaune', 'Jaune'),
         ('paille','Paille'),
         ('or','Or'),
@@ -69,28 +69,144 @@ class Fiche(models.Model):
         ('ambré','Ambré'),
         ('madérisé','Madérisé')
     ]
-    robe_blanc = models.CharField(max_length=20, choices=ROBE_BLANC)
-    robe_rose = models.CharField()
-    robe_rouge = models.CharField()
-    viscosite = models.CharField()
-    commentaires_visuel = models.CharField()
-    intensite_nez = models.CharField()
-    rappel_fruit = models.CharField()
-    rappel_floral = models.CharField()
-    rappel_epice = models.CharField() 
-    bouquet = models.CharField()
-    commentaires_arome = models.CharField()
-    douceur = models.CharField()
-    tanins = models.CharField()
-    acidite = models.CharField()
-    corps = models.CharField()
-    persistance = models.CharField()
-    equilibre = models.CharField()
-    stade_maturation = models.CharField()
-    impression_technique = models.CharField()
-    commentaires_ensemble = models.CharField()
-    impression_personnelle = models.CharField()
+    robe_blanc = models.CharField(max_length=20, choices=ROBE_BLANC, blank=True, null=True)
+    ROBE_ROSE = [
+        ('gris','Gris'),
+        ('rosé','Rosé'),
+        ('rosé framboise','Rosé framboise'),
+        ('rosé orange','Rosé orange')
+    ]
+    robe_rose = models.CharField(max_length=20, choices=ROBE_ROSE, blank=True, null=True)
+    ROBE_ROUGE = [
+        ('violet pourpre','Violet pourpre'),
+        ('grenat','Grenat'),
+        ('rubis','Rubis'),
+        ('incarnat','Incarnat'),
+        ('carmin','Carmin'),
+        ('vermillon','Vermillon'),
+        ('brique','Brique'),
+        ('tuile','Tuile'),
+        ('orange','Orange')
+    ]
+    robe_rouge = models.CharField(max_length=20, choices=ROBE_ROUGE, blank=True, null=True)
+    VISCOSITE = [
+        ('léger','Léger'),
+        ('normal','Normal'),
+        ('lourd','Lourd'),
+        ('gras','Gras')
+    ]
+    viscosite = models.CharField(max_length=20, choices=VISCOSITE)
+    commentaires_visuel = models.CharField(max_length=255)
+    INTENSITE_NEZ = [
+        ('défectueux','Défectueux'),
+        ('faible','Faible'),
+        ('modéré','Modéré'),
+        ('marqué','Marqué'),
+        ('puissant','Puissant')
+    ]
+    intensite_nez = models.CharField(max_length=20, choices=INTENSITE_NEZ)
+    RAPPEL = [
+        ('nul','Nul'),
+        ('léger','Léger'),
+        ('moyen','Moyen'),
+        ('distinct','Distinct'),
+        ('prononcé','Prononcé')
+    ]
+    rappel_fruit = models.CharField(max_length=20, choices=RAPPEL)
+    rappel_floral = models.CharField(max_length=20, choices=RAPPEL)
+    rappel_epice = models.CharField(max_length=20, choices=RAPPEL)
+    BOUQUET = [
+        ('ordinaire','Ordinaire'),
+        ('agréable','Agréable'),
+        ('fin','Fin'),
+        ('complexe','Complexe'),
+        ('expressif','Expresssif')
+    ] 
+    bouquet = models.CharField(max_length=20, choices=BOUQUET)
+    commentaires_arome = models.CharField(max_length=255)
+    DOUCEUR = [
+        ('extra-sec','Extra-sec'),
+        ('sec','Sec'),
+        ('demi-sec','Demi-sec'),
+        ('moelleux','Moelleux'),
+        ('liquoreux','Liquoreux')
+    ]
+    douceur = models.CharField(max_length=20, choices=DOUCEUR, blank=True, null=True)
+    TANINS = [
+        ('maigre','Maigre'),
+        ('fondu','Fondu'),
+        ('savoureux','Savoureux'),
+        ('présent','Présent'),
+        ('astringent','Astringent'),
+        ('rude','Rude')
+    ]
+    tanins = models.CharField(max_length=20, choices=TANINS, blank=True, null=True)
+    ACIDITE = [
+        ('plat','Plat'),
+        ('mou','Mou'),
+        ('souple','Souple'),
+        ('frais','Frais'),
+        ('vif','Vif'),
+        ('acide','Acide'),
+        ('vert','Vert')
+    ]
+    acidite = models.CharField(max_length=20, choices=ACIDITE)
+    CORPS = [
+        ('mince','Mince'),
+        ('plaisant','Plaisant'),
+        ('rond','Rond'),
+        ('ferme','Ferme'),
+        ('ample','Ample'),
+        ('charnu','Charnu'),
+        ('étoffé','Etoffé')
+    ]
+    corps = models.CharField(max_length=20,choices=CORPS)
+    PERSISTANCE = [
+        ('courte','Courte'),
+        ('moyenne','Moyenne'),
+        ('longue','Longue'),
+        ('prolongée','Prolongée')
+    ]
+    persistance = models.CharField(max_length=20, choices=PERSISTANCE)
+    EQUILIBRE = [
+        ('déséquilibré','Déséquilibré'),
+        ('fragile','Fragile'),
+        ('correct','Correct'),
+        ('bien','Bien'),
+        ('très bien','Très bien'),
+        ('parfait','Parfait')
+    ]
+    equilibre = models.CharField(max_length=20, choices=EQUILIBRE)
+    commentaires_saveur = models.CharField(max_length=255)
+    STADE_MATURATION = [
+        ('passé','Passé'),
+        ('vieilli','Vieilli'),
+        ('épanoui','Epanoui'),
+        ("s'ouvre", "S'ouvre"),
+        ('fermé','Fermé')
+    ]
+    stade_maturation = models.CharField(max_length=20,choices=STADE_MATURATION)
+    IMPRESSION_TECHNIQUE = [
+        ('médiocre','Médiocre'),
+        ('acceptable','Acceptable'),
+        ('correct','Correct'),
+        ('bon','Bon'),
+        ('très bon', 'Très bon'),
+        ('remarquable','Remarquable')
+    ]
+    impression_technique = models.CharField(max_length=20,choices=IMPRESSION_TECHNIQUE)
+    commentaires_ensemble = models.CharField(max_length=255)
+    IMPRESSION_PERSONNELLE=[
+        ('quelconque','Quelconque'),
+        ('satisfaisant','Satisfaisant'),
+        ('bien','Bien'),
+        ('très bien','Très bien')
+    ]
+    impression_personnelle = models.CharField(max_length=20, choices=IMPRESSION_PERSONNELLE)
     date_degustation = models.DateField(default=timezone.now)
-    periode_garde = models.CharField()
+    periode_garde = models.CharField(max_length=20)
     vin = models.ForeignKey(Vin, on_delete=models.CASCADE)
     auteur = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('fiche-detail', kwargs={'pk': self.pk})

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Soiree, Vin
+from .models import Post, Soiree, Vin, Fiche
 
 class SoireeAdmin(admin.ModelAdmin):
     list_display = (
@@ -20,7 +20,7 @@ class VinAdmin(admin.ModelAdmin):
     )
 
 
-
 admin.site.register(Post, PostAdmin)
 admin.site.register(Soiree, SoireeAdmin)
 admin.site.register(Vin, VinAdmin)
+admin.site.register(Fiche)
