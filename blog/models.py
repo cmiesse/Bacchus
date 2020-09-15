@@ -102,7 +102,7 @@ class Fiche(models.Model):
         ('gras','Gras')
     ]
     viscosite = models.CharField(max_length=20, choices=VISCOSITE, verbose_name= 'Viscosité')
-    commentaires_visuel = models.TextField()
+    commentaires_visuel = models.TextField(verbose_name= 'Commentaires (visuel)', blank=True, null=True)
     INTENSITE_NEZ = [
         ('défectueux','Défectueux'),
         ('faible','Faible'),
@@ -129,7 +129,7 @@ class Fiche(models.Model):
         ('expressif','Expresssif')
     ] 
     bouquet = models.CharField(max_length=20, choices=BOUQUET)
-    commentaires_arome = models.TextField(verbose_name= 'Commentaires (arôme)')
+    commentaires_arome = models.TextField(verbose_name= 'Commentaires (arôme)', blank=True, null=True)
     DOUCEUR = [
         ('extra-sec','Extra-sec'),
         ('sec','Sec'),
@@ -183,7 +183,7 @@ class Fiche(models.Model):
         ('parfait','Parfait')
     ]
     equilibre = models.CharField(max_length=20, choices=EQUILIBRE, verbose_name= 'Équilibre')
-    commentaires_saveur = models.TextField(verbose_name= 'Commentaires (saveur)')
+    commentaires_saveur = models.TextField(verbose_name= 'Commentaires (saveur)', blank=True, null=True)
     STADE_MATURATION = [
         ('passé','Passé'),
         ('vieilli','Vieilli'),
@@ -201,7 +201,7 @@ class Fiche(models.Model):
         ('remarquable','Remarquable')
     ]
     impression_technique = models.CharField(max_length=20,choices=IMPRESSION_TECHNIQUE)
-    commentaires_ensemble = models.TextField(verbose_name= 'Commentaires (ensemble)')
+    commentaires_ensemble = models.TextField(verbose_name= 'Commentaires (ensemble)', blank=True, null=True)
     IMPRESSION_PERSONNELLE=[
         ('quelconque','Quelconque'),
         ('satisfaisant','Satisfaisant'),
