@@ -1,7 +1,5 @@
 {% extends "blog/base.html" %} {% block content %}
-<h1 class="mb-3">
-  Fiches de {{ view.kwargs.username }} ({{ page_obj.paginator.count }})
-</h1>
+<h1 class="mb-3">Fiches de {{ view.kwargs.username }}</h1>
 {% for fiche in fiches %}
 <article class="media content-section">
   <img

@@ -37,7 +37,7 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">Bacchus</a>
+          <a class="navbar-brand mr-4" href="{% url 'blog-about' %}">Bacchus</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -51,19 +51,21 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="{% url 'blog-home' %}"
+              <a class="nav-item nav-link" href="{% url 'blog-about' %}"
                 >Accueil</a
               >
               <a class="nav-item nav-link" href="{% url 'soiree-list' %}"
-                >Soirées</a
+                >Soirées 🌙</a
               >
-              <a class="nav-item nav-link" href="{% url 'vin-list' %}">Vins</a>
+              <a class="nav-item nav-link" href="{% url 'vin-list' %}"
+                >Vins 🍷</a
+              >
               <a class="nav-item nav-link" href="{% url 'fiche-list' %}"
-                >Fiches</a
+                >Fiches 📄</a
               >
-              <a class="nav-item nav-link" href="{% url 'blog-about' %}"
+              <!--<a class="nav-item nav-link" href="{% url 'blog-about' %}"
                 >A propos</a
-              >
+              >-->
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
@@ -75,6 +77,10 @@
               <a class="nav-item nav-link" href="{% url 'vin-create' %}"
                 >Nouveau vin</a
               >
+              <a class="nav-item nav-link" href="{% url 'fiche-create'%}"
+                >Nouvelle fiche</a
+              >
+
               <a class="nav-item nav-link" href="{% url 'profile' %}">Profil</a>
               <a class="nav-item nav-link" href="{% url 'logout' %}"
                 >Déconnexion</a

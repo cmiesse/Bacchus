@@ -17,12 +17,15 @@ class Post(models.Model):
         return reverse('post-detail', kwargs={'pk': self.pk})
 
 class Soiree(models.Model):
-    theme = models.CharField(max_length=100)
-    date_soiree =models.DateField()
+    theme = models.CharField(max_length=100, verbose_name= 'Thème')
+    date_soiree =models.DateField(verbose_name= 'Date de la soirée')
+
+    def get_absolute_url(self):
+        return reverse('soiree-detail', kwargs={'pk': self.pk})
 
 class Vin(models.Model):
     pays= models.CharField(max_length=100)
-    region= models.CharField(max_length=100)
+    region= models.CharField(max_length=100, verbose_name= 'Région')
     appelation= models.CharField(max_length=100)
     cru= models.CharField(max_length=100)
     BLANC='blanc'
@@ -34,12 +37,12 @@ class Vin(models.Model):
         (ROUGE, 'Rouge'),
     ]
     couleur= models.CharField(max_length=5, choices=COULEUR_CHOICES, default=ROUGE)
-    lieu_achat= models.CharField(max_length=100)
-    prix_achat= models.FloatField()
-    millesime=models.IntegerField()
-    cepages= models.CharField(max_length=100)
-    proprietaire= models.CharField(max_length=100)
-    degre= models.FloatField()
+    lieu_achat= models.CharField(max_length=100, verbose_name= 'Lieu d\'achat')
+    prix_achat= models.FloatField(verbose_name= 'Prix d\'achat')
+    millesime=models.IntegerField(verbose_name= 'Millésime')
+    cepages= models.CharField(max_length=100, verbose_name= 'Cépages')
+    proprietaire= models.CharField(max_length=100, verbose_name= 'Propriétaire')
+    degre= models.FloatField(verbose_name= 'Degré')
 
     def __str__(self):
         return self.appelation
@@ -53,7 +56,7 @@ class Fiche(models.Model):
         ('brillant','Brillant'),
         ('scintillant','Scintillant')
     ]
-    limpidite = models.CharField(max_length=20, choices=LIMPIDITE,default='brillant')
+    limpidite = models.CharField(max_length=20, choices=LIMPIDITE,default='brillant',verbose_name= 'Limpidité')
     INTENSITE_COULEURS = [
         ('pâle','Pâle'),
         ('moyenne','Moyenne'),
@@ -61,7 +64,7 @@ class Fiche(models.Model):
         ('foncée','Foncée'),
         ('soutenue','Soutenue')
     ]
-    intensite_couleurs = models.CharField(max_length=20, choices=INTENSITE_COULEURS,default='moyenne')
+    intensite_couleurs = models.CharField(max_length=20, choices=INTENSITE_COULEURS,default='moyenne', verbose_name= 'Intensité des couleurs')
     ROBE_BLANC = [
         ('teinté de vert','Teinté de vert'),
         ('jaune pâle','Jaune pâle'),
@@ -72,14 +75,14 @@ class Fiche(models.Model):
         ('ambré','Ambré'),
         ('madérisé','Madérisé')
     ]
-    robe_blanc = models.CharField(max_length=20, choices=ROBE_BLANC, blank=True, null=True)
+    robe_blanc = models.CharField(max_length=20, choices=ROBE_BLANC, blank=True, null=True, verbose_name= 'Robe (blanc)')
     ROBE_ROSE = [
         ('gris','Gris'),
         ('rosé','Rosé'),
         ('rosé framboise','Rosé framboise'),
         ('rosé orange','Rosé orange')
     ]
-    robe_rose = models.CharField(max_length=20, choices=ROBE_ROSE, blank=True, null=True)
+    robe_rose = models.CharField(max_length=20, choices=ROBE_ROSE, blank=True, null=True, verbose_name= 'Robe (rosé)')
     ROBE_ROUGE = [
         ('violet pourpre','Violet pourpre'),
         ('grenat','Grenat'),
@@ -91,15 +94,15 @@ class Fiche(models.Model):
         ('tuile','Tuile'),
         ('orange','Orange')
     ]
-    robe_rouge = models.CharField(max_length=20, choices=ROBE_ROUGE, blank=True, null=True)
+    robe_rouge = models.CharField(max_length=20, choices=ROBE_ROUGE, blank=True, null=True, verbose_name= 'Robe (rouge)')
     VISCOSITE = [
         ('léger','Léger'),
         ('normal','Normal'),
         ('lourd','Lourd'),
         ('gras','Gras')
     ]
-    viscosite = models.CharField(max_length=20, choices=VISCOSITE)
-    commentaires_visuel = models.CharField(max_length=255)
+    viscosite = models.CharField(max_length=20, choices=VISCOSITE, verbose_name= 'Viscosité')
+    commentaires_visuel = models.TextField()
     INTENSITE_NEZ = [
         ('défectueux','Défectueux'),
         ('faible','Faible'),
@@ -107,7 +110,7 @@ class Fiche(models.Model):
         ('marqué','Marqué'),
         ('puissant','Puissant')
     ]
-    intensite_nez = models.CharField(max_length=20, choices=INTENSITE_NEZ)
+    intensite_nez = models.CharField(max_length=20, choices=INTENSITE_NEZ, verbose_name= 'Intensité du nez')
     RAPPEL = [
         ('nul','Nul'),
         ('léger','Léger'),
@@ -115,9 +118,9 @@ class Fiche(models.Model):
         ('distinct','Distinct'),
         ('prononcé','Prononcé')
     ]
-    rappel_fruit = models.CharField(max_length=20, choices=RAPPEL)
-    rappel_floral = models.CharField(max_length=20, choices=RAPPEL)
-    rappel_epice = models.CharField(max_length=20, choices=RAPPEL)
+    rappel_fruit = models.CharField(max_length=20, choices=RAPPEL, verbose_name= 'Rappel du fruit')
+    rappel_floral = models.CharField(max_length=20, choices=RAPPEL, verbose_name= 'Rappel floral')
+    rappel_epice = models.CharField(max_length=20, choices=RAPPEL, verbose_name= 'Rappel d\'épice')
     BOUQUET = [
         ('ordinaire','Ordinaire'),
         ('agréable','Agréable'),
@@ -126,7 +129,7 @@ class Fiche(models.Model):
         ('expressif','Expresssif')
     ] 
     bouquet = models.CharField(max_length=20, choices=BOUQUET)
-    commentaires_arome = models.CharField(max_length=255)
+    commentaires_arome = models.TextField(verbose_name= 'Commentaires (arôme)')
     DOUCEUR = [
         ('extra-sec','Extra-sec'),
         ('sec','Sec'),
@@ -153,7 +156,7 @@ class Fiche(models.Model):
         ('acide','Acide'),
         ('vert','Vert')
     ]
-    acidite = models.CharField(max_length=20, choices=ACIDITE)
+    acidite = models.CharField(max_length=20, choices=ACIDITE, verbose_name= 'Acidité')
     CORPS = [
         ('mince','Mince'),
         ('plaisant','Plaisant'),
@@ -179,8 +182,8 @@ class Fiche(models.Model):
         ('très bien','Très bien'),
         ('parfait','Parfait')
     ]
-    equilibre = models.CharField(max_length=20, choices=EQUILIBRE)
-    commentaires_saveur = models.CharField(max_length=255)
+    equilibre = models.CharField(max_length=20, choices=EQUILIBRE, verbose_name= 'Équilibre')
+    commentaires_saveur = models.TextField(verbose_name= 'Commentaires (saveur)')
     STADE_MATURATION = [
         ('passé','Passé'),
         ('vieilli','Vieilli'),
@@ -188,7 +191,7 @@ class Fiche(models.Model):
         ("s'ouvre", "S'ouvre"),
         ('fermé','Fermé')
     ]
-    stade_maturation = models.CharField(max_length=20,choices=STADE_MATURATION)
+    stade_maturation = models.CharField(max_length=20,choices=STADE_MATURATION, verbose_name= 'Stade de maturation')
     IMPRESSION_TECHNIQUE = [
         ('médiocre','Médiocre'),
         ('acceptable','Acceptable'),
@@ -198,7 +201,7 @@ class Fiche(models.Model):
         ('remarquable','Remarquable')
     ]
     impression_technique = models.CharField(max_length=20,choices=IMPRESSION_TECHNIQUE)
-    commentaires_ensemble = models.CharField(max_length=255)
+    commentaires_ensemble = models.TextField(verbose_name= 'Commentaires (ensemble)')
     IMPRESSION_PERSONNELLE=[
         ('quelconque','Quelconque'),
         ('satisfaisant','Satisfaisant'),
@@ -206,8 +209,8 @@ class Fiche(models.Model):
         ('très bien','Très bien')
     ]
     impression_personnelle = models.CharField(max_length=20, choices=IMPRESSION_PERSONNELLE)
-    date_degustation = models.DateField(default=timezone.now)
-    periode_garde = models.CharField(max_length=20)
+    date_degustation = models.DateField(default=timezone.now, verbose_name= 'Date de dégustation')
+    periode_garde = models.CharField(max_length=20, verbose_name= 'Période de garde')
     vin = models.ForeignKey(Vin, on_delete=models.CASCADE)
     auteur = models.ForeignKey(User, on_delete=models.CASCADE)
 

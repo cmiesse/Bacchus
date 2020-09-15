@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.views.generic import (
+    TemplateView,
     ListView,
     DetailView,
     CreateView,
@@ -125,7 +126,8 @@ class FicheDetailView(DetailView):
 
 class FicheCreateView(LoginRequiredMixin, CreateView):
     model = Fiche
-    fields = ['limpidite',
+    fields = ['vin',
+'limpidite',
 'intensite_couleurs',
 'robe_blanc',
 'robe_rose',
@@ -151,7 +153,7 @@ class FicheCreateView(LoginRequiredMixin, CreateView):
 'impression_personnelle',
 'date_degustation',
 'periode_garde',
-'vin'
+
 ]
 
     def form_valid(self, form):
@@ -220,5 +222,6 @@ class VinFicheListView(ListView):
         vin = get_object_or_404(Vin, id=self.kwargs.get('id'))
         return Fiche.objects.filter(vin=vin)
 
-def about(request):
-    return render(request, 'blog/about.html', {'title': 'About'})
+class HomePageView(TemplateView):
+    template_name = "blog/about.html"
+    title = "About"
