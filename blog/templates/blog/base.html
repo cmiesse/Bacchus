@@ -51,9 +51,9 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="{% url 'blog-about' %}"
+              <!--<a class="nav-item nav-link" href="{% url 'blog-about' %}"
                 >Accueil</a
-              >
+              >-->
               <a class="nav-item nav-link" href="{% url 'soiree-list' %}"
                 >Soirées 🌙</a
               >
@@ -62,6 +62,9 @@
               >
               <a class="nav-item nav-link" href="{% url 'fiche-list' %}"
                 >Fiches 📄</a
+              >
+              <a class="nav-item nav-link" href="{% url 'post-list' %}"
+                >Posts 📧</a
               >
               <!--<a class="nav-item nav-link" href="{% url 'blog-about' %}"
                 >A propos</a
@@ -80,7 +83,9 @@
               <a class="nav-item nav-link" href="{% url 'fiche-create'%}"
                 >Nouvelle fiche</a
               >
-
+              <a class="nav-item nav-link" href="{% url 'post-create'%}"
+                >Nouveau post</a
+              >
               <a class="nav-item nav-link" href="{% url 'profile' %}">Profil</a>
               <a class="nav-item nav-link" href="{% url 'logout' %}"
                 >Déconnexion</a

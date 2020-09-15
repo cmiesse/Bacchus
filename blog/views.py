@@ -11,10 +11,12 @@ from django.views.generic import (
 )
 from .models import Post, Soiree, Vin, Fiche
 
+class HomePageView(TemplateView):
+    template_name = "blog/about.html"
 
 class PostListView(ListView):
     model = Post
-    template_name = 'blog/home.html'  # <app>/<model>_<viewtype>.html
+    template_name = 'blog/post.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'
     ordering = ['-date_post']
     #paginate_by = 5
@@ -221,7 +223,3 @@ class VinFicheListView(ListView):
     def get_queryset(self):
         vin = get_object_or_404(Vin, id=self.kwargs.get('id'))
         return Fiche.objects.filter(vin=vin)
-
-class HomePageView(TemplateView):
-    template_name = "blog/about.html"
-    title = "About"

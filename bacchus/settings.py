@@ -151,7 +151,7 @@ MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'blog-home'
+LOGIN_REDIRECT_URL = 'blog-about'
 LOGIN_URL = 'login'
 
 from secret_key import HOST_USER,HOST_PASSWORD
