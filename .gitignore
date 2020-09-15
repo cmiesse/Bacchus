@@ -110,7 +110,7 @@ ENV/
 .idea
 bacchus/secret_key.py
 # Ignore Django Migrations in Development if you are working on team
-
+media/profile_pics
 # Only for Development only
 **/migrations/**
 !**/migrations

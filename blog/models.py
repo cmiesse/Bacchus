@@ -137,7 +137,7 @@ class Fiche(models.Model):
         ('moelleux','Moelleux'),
         ('liquoreux','Liquoreux')
     ]
-    douceur = models.CharField(max_length=20, choices=DOUCEUR, blank=True, null=True)
+    douceur = models.CharField(max_length=20, choices=DOUCEUR, blank=True, null=True, verbose_name= 'Douceur (blanc)')
     TANINS = [
         ('maigre','Maigre'),
         ('fondu','Fondu'),
@@ -146,7 +146,7 @@ class Fiche(models.Model):
         ('astringent','Astringent'),
         ('rude','Rude')
     ]
-    tanins = models.CharField(max_length=20, choices=TANINS, blank=True, null=True)
+    tanins = models.CharField(max_length=20, choices=TANINS, blank=True, null=True, verbose_name= 'Tanins (rouge)')
     ACIDITE = [
         ('plat','Plat'),
         ('mou','Mou'),
