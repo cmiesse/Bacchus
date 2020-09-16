@@ -1,5 +1,14 @@
 {% extends "blog/base.html" %} {% block content %}
-<h1>Fiches de vins de Bacchus</h1>
+<div class="d-flex align-items-center justify-content-between">
+  <h1>Fiches de vin de Bacchus</h1>
+  <a
+    href="{% url 'fiche-create' %}"
+    class="btn btn-primary btn-lg"
+    role="button"
+    aria-pressed="true"
+    >Ajouter</a
+  >
+</div>
 {% for fiche in fiches %}
 
 <article class="media content-section">

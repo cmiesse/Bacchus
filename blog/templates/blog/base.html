@@ -73,20 +73,9 @@
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
               {% if user.is_authenticated %}
-              <!--<a class="nav-item nav-link" href="{% url 'post-create' %}">Nouvelle annonce</a>-->
-              <a class="nav-item nav-link" href="{% url 'soiree-create' %}"
-                >Nouvelle soirée</a
+              <a class="nav-item nav-link" href="{% url 'profile' %}"
+                >Profil 👤</a
               >
-              <a class="nav-item nav-link" href="{% url 'vin-create' %}"
-                >Nouveau vin</a
-              >
-              <a class="nav-item nav-link" href="{% url 'fiche-create'%}"
-                >Nouvelle fiche</a
-              >
-              <a class="nav-item nav-link" href="{% url 'post-create'%}"
-                >Nouveau post</a
-              >
-              <a class="nav-item nav-link" href="{% url 'profile' %}">Profil</a>
               <a class="nav-item nav-link" href="{% url 'logout' %}"
                 >Déconnexion</a
               >
