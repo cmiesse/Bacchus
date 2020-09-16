@@ -86,7 +86,7 @@ class SoireeCreateView(LoginRequiredMixin, CreateView):
 
 class SoireeUpdateView(LoginRequiredMixin, UpdateView):
     model = Soiree
-    fields = ['pays', 'region', 'appelation', 'cru', 'couleur', 'lieu_achat', 'prix_achat', 'millesime', 'cepages', 'proprietaire', 'degre']
+    fields = ['theme', 'date_soiree']
 
 class VinListView(ListView):
     model = Vin
