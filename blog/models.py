@@ -25,9 +25,9 @@ class Soiree(models.Model):
 
 class Vin(models.Model):
     pays= models.CharField(max_length=100)
-    region= models.CharField(max_length=100, verbose_name= 'Région')
+    region= models.CharField(max_length=100, verbose_name= 'Région', blank=True, null=True)
     appelation= models.CharField(max_length=100)
-    cru= models.CharField(max_length=100)
+    cru= models.CharField(max_length=100, blank=True, null=True)
     BLANC='blanc'
     ROSE='rosé'
     ROUGE='rouge'
@@ -37,11 +37,11 @@ class Vin(models.Model):
         (ROUGE, 'Rouge'),
     ]
     couleur= models.CharField(max_length=5, choices=COULEUR_CHOICES, default=ROUGE)
-    lieu_achat= models.CharField(max_length=100, verbose_name= 'Lieu d\'achat')
-    prix_achat= models.FloatField(verbose_name= 'Prix d\'achat')
+    lieu_achat= models.CharField(max_length=100, verbose_name= 'Lieu d\'achat', blank=True, null=True)
+    prix_achat= models.FloatField(verbose_name= 'Prix d\'achat', blank=True, null=True)
     millesime=models.IntegerField(verbose_name= 'Millésime')
-    cepages= models.CharField(max_length=100, verbose_name= 'Cépages')
-    proprietaire= models.CharField(max_length=100, verbose_name= 'Propriétaire')
+    cepages= models.CharField(max_length=100, verbose_name= 'Cépages', blank=True, null=True)
+    proprietaire= models.CharField(max_length=100, verbose_name= 'Propriétaire', blank=True, null=True)
     degre= models.FloatField(verbose_name= 'Degré')
 
     def __str__(self):
