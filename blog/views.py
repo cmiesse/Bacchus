@@ -98,11 +98,11 @@ class VinDetailView(DetailView):
 
 class VinCreateView(LoginRequiredMixin, CreateView):
     model = Vin
-    fields = ['pays', 'region', 'appelation', 'cru', 'couleur', 'lieu_achat', 'prix_achat', 'millesime', 'cepages', 'proprietaire', 'degre']
+    fields = ['nom','pays', 'region', 'appelation', 'cru', 'couleur', 'lieu_achat', 'prix_achat', 'millesime', 'cepages', 'proprietaire', 'degre']
 
 class VinUpdateView(LoginRequiredMixin, UpdateView):
     model = Vin
-    fields = ['pays', 'region', 'appelation', 'cru', 'couleur', 'lieu_achat', 'prix_achat', 'millesime', 'cepages', 'proprietaire', 'degre']
+    fields = ['nom','pays', 'region', 'appelation', 'cru', 'couleur', 'lieu_achat', 'prix_achat', 'millesime', 'cepages', 'proprietaire', 'degre']
 
 class VinDeleteView(LoginRequiredMixin, DeleteView):
     model = Vin
