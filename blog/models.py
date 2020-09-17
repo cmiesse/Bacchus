@@ -24,7 +24,7 @@ class Soiree(models.Model):
         return reverse('soiree-detail', kwargs={'pk': self.pk})
 
 class Vin(models.Model):
-    nom = models.CharField(max_length=100, blank=True, null=True)
+    nom = models.CharField(max_length=100)
     pays= models.CharField(max_length=100)
     region= models.CharField(max_length=100, verbose_name= 'Région', blank=True, null=True)
     appelation= models.CharField(max_length=100, blank=True, null=True)
@@ -46,7 +46,7 @@ class Vin(models.Model):
     degre= models.FloatField(verbose_name= 'Degré')
 
     def __str__(self):
-        return self.appelation
+        return self.nom
 
     def get_absolute_url(self):
         return reverse('vin-detail', kwargs={'pk': self.pk})
