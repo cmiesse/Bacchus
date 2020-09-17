@@ -24,7 +24,7 @@ class Soiree(models.Model):
         return reverse('soiree-detail', kwargs={'pk': self.pk})
 
 class Vin(models.Model):
-    nom = models.CharField(max_length=100, default='vin')
+    nom = models.CharField(max_length=100)
     pays= models.CharField(max_length=100)
     region= models.CharField(max_length=100, verbose_name= 'Région', blank=True, null=True)
     appelation= models.CharField(max_length=100, blank=True, null=True)
